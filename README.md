@@ -11,4 +11,6 @@
 
 1. 克隆仓库
    ```bash
-   git clone https://github.com/a07530110249-Logicer/
+   git clone https://github.com/a07530110249-Logicer/alarm-system.git
+   cd alarm-system
+
