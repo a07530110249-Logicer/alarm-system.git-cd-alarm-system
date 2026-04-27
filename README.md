@@ -13,4 +13,17 @@
    ```bash
    git clone https://github.com/a07530110249-Logicer/alarm-system.git
    cd alarm-system
+2、待办事项
+ 
+接入真实传感器（串口/ModBus）
+ 
+添加邮件/微信报警通知
+ 
+支持 Web 可视化界面
+
+3、技术栈
+ 
+Python 3.x
+ 
+标准库： json ,  logging ,  time ,  datetime
 
