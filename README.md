@@ -27,21 +27,33 @@ Python 3.x
  
 标准库： json ,  logging ,  time ,  datetime
 
-┌─────────────────────────────────────────┐
-│  
-|    SensorReader (模拟/ModBus/串口)      |
-│                                        |
-├─────────────────────────────────────────┤
-│  
-|   AlarmEngine (状态机 + Hysteresis)     |
-│                                         |
-├─────────────────────────────────────────┤
-│  
-|   BoilerMonitor (生命周期 + 报警管道)    |
-│                                         |
-├─────────────────────────────────────────┤
-│  BoilerDatabase (SQLite 时序存储)       │
-│  Watchdog (软件看门狗)                   │
-├─────────────────────────────────────────┤
-│  日志文件 + 结构化查询                   │
-└─────────────────────────────────────────┘
+
+## 架构图
+
+```mermaid
+flowchart TD
+    subgraph Input["📡 数据采集层"]
+        S1[SensorReader<br/>Simulated/ModBus/Serial]
+    end
+    
+    subgraph Core["⚙️ 核心逻辑层"]
+        A1[AlarmEngine<br/>State Machine + Hysteresis]
+        M1[BoilerMonitor<br/>Lifecycle + Alarm Pipe]
+    end
+    
+    subgraph Data["💾 数据持久层"]
+        D1[(BoilerDatabase<br/>SQLite)]
+        W1[Watchdog<br/>Software Monitor]
+    end
+    
+    subgraph Output["📤 输出层"]
+        L1[Log Files]
+        Q1[Structured Query]
+    end
+    
+    S1 --> A1
+    A1 --> M1
+    M1 --> D1
+    M1 --> W1
+    D1 --> Q1
+    M1 --> L1
