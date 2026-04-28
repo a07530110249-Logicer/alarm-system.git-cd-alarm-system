@@ -28,11 +28,17 @@ Python 3.x
 标准库： json ,  logging ,  time ,  datetime
 
 ┌─────────────────────────────────────────┐
-│  SensorReader (模拟/ModBus/串口)        │
+│  
+|    SensorReader (模拟/ModBus/串口)      |
+│                                        |
 ├─────────────────────────────────────────┤
-│  AlarmEngine (状态机 + Hysteresis)      │
+│  
+|   AlarmEngine (状态机 + Hysteresis)     |
+│                                         |
 ├─────────────────────────────────────────┤
-│  BoilerMonitor (生命周期 + 报警管道)     │
+│  
+|   BoilerMonitor (生命周期 + 报警管道)    |
+│                                         |
 ├─────────────────────────────────────────┤
 │  BoilerDatabase (SQLite 时序存储)       │
 │  Watchdog (软件看门狗)                   │
