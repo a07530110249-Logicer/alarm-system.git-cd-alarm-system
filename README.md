@@ -26,3 +26,4 @@ Python 3.x
  
 标准库： json ,  logging ,  time ,  datetime
 
+4、后续接入了postageSQL数据库，使得我们可以记录程序数据，以便我们实现报警功能
