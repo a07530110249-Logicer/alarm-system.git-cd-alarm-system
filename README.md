@@ -11,8 +11,7 @@
 
 1. 克隆仓库
    ```bash
-   git clone https://github.com/a07530110249-Logicer/alarm-system.git
-   cd-alarm-system
+   git clone https://github.com/a07530110249-Logicer/alarm-system.git-cd-alarm-system
 2、待办事项
  
 接入真实传感器（串口/ModBus）
