@@ -1,12 +1,9 @@
+# 锅炉监控系统管理脚本
 param(
     [Parameter()]
     [ValidateSet("up", "down", "logs", "db", "test", "status", "sim")]
     [string]$Command = "status"
 )
-
-# 切换到脚本所在目录，确保 docker compose 能找到配置文件
-$ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
-if ($ScriptDir) { Set-Location $ScriptDir }
 
 switch ($Command) {
     "up" {
@@ -14,7 +11,7 @@ switch ($Command) {
         docker compose up -d
         Write-Host ""
         Write-Host "服务已启动:"
-        Write-Host "  PostgreSQL : localhost:5432  (postgres / 123456)"
+        Write-Host "  PostgreSQL : localhost:5432  (admin / 123456)"
         Write-Host "  Grafana    : http://localhost:3000  (admin / admin)"
         Write-Host ""
         Write-Host "下一步: python boiler_api.py"
@@ -27,7 +24,7 @@ switch ($Command) {
         docker compose logs -f
     }
     "db" {
-        docker exec -it boiler-postgres psql -U postgres
+        docker exec -it boiler-postgres psql -U admin -d boiler_db
     }
     "test" {
         Write-Host "发送一条 HTTP 测试数据..."
