@@ -12,18 +12,22 @@
 1. 克隆仓库
    ```bash
    git clone https://github.com/a07530110249-Logicer/alarm-system.git-cd-alarm-system
-2、待办事项
- 
-接入真实传感器（串口/ModBus）
- 
-添加邮件/微信报警通知
- 
-支持 Web 可视化界面
 
-3、技术栈
+2、技术栈
  
 Python 3.x
  
-标准库： json ,  logging ,  time ,  datetime
+标准库： json ,  logging ,  time ,  datetime ，docker
 
-4、后续接入了postageSQL数据库，使得我们可以记录程序数据，以便我们实现报警功能
+3、后续接入了postageSQL数据库，使得我们可以记录程序数据，以便我们实现报警功能
+
+## 后续待扩展事项
+
+. 
+传感器仿真器：写一个  sensor_simulator.py ，自动每隔几秒向你的 HTTP 接口发送带随机波动的数据，模拟真实锅炉升温曲线
+2. 
+Grafana 可视化：Docker 再起一个 Grafana 容器，对接 PostgreSQL 画实时仪表盘
+3. 
+ModBus 接入：把 HTTP 接口换成  pymodbus  读取虚拟 PLC，协议层更贴近工业现场
+4. 
+报警通知： is_alarm=True  时发邮件/企业微信，而不只是打印
