@@ -1,0 +1,7 @@
+{
+    "TEMP_LIMIT": 100,
+    "HIGH_LIMIT": 10,
+    "PRESS_LIMIT": 100000,
+    "interval": 2,
+    "hysteresis_ratio": 0.02
+}
