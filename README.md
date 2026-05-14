@@ -1,11 +1,14 @@
-一个基于 Python 的工业参数监测报警程序，支持阈值配置和日志记录。
+# 工业锅炉监控系统
 
-## 功能
+基于Python的工业参数监测报警系统，支持传感器模拟、
+阈值报警、时序数据存储和REST API接口。
 
-- 实时监测温度、压力、水位三项指标
-- 温度 ≥ 100 时，若水位 > 10 或压力 > 100000 触发报警
-- 支持通过 `config.json` 自定义阈值
-- 自动记录运行日志到 `alarm_YYYYMMDD.log`
+## 快速开始
+
+```bash
+cd alarm-system
+docker-compose up          # 启动完整环境
+python sensor_simulator.py # 或单独运行模拟器
 
 ## 快速开始
 
