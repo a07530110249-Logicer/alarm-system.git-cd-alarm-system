@@ -20,7 +20,7 @@ with open(CONFIG_PATH, encoding="utf-8") as f:
 DB_CONFIG = {
     "host": "localhost",
     "port": 5432,
-    "user": "postgres",      # 默认超级用户，兼容旧数据库
+    "user": "postgres",
     "password": "123456",
     "dbname": "postgres"
 }
@@ -56,11 +56,17 @@ def init_db():
 
 
 def check_alarm(temper: int, high: int, press: int) -> tuple[str, bool]:
-    """报警判断逻辑。"""
-    if temper < CFG["TEMP_LIMIT"]:
-        return "safe", False
-    if high > CFG["HIGH_LIMIT"] or press > CFG["PRESS_LIMIT"]:
+    """
+    独立监控三项指标，任一参数超过安全阈值即触发报警。
+    
+    规则：
+    - 温度 >= TEMP_LIMIT（达到阈值即报警）
+    - 水位 > HIGH_LIMIT（超过阈值才报警）
+    - 压力 > PRESS_LIMIT（超过阈值才报警）
+    """
+    if temper >= CFG["TEMP_LIMIT"] or high > CFG["HIGH_LIMIT"] or press > CFG["PRESS_LIMIT"]:
         return "error", True
+    
     return "safe", False
 
 
@@ -111,3 +117,4 @@ if __name__ == '__main__':
     print("数据库已初始化")
     print("启动 Flask 服务: http://0.0.0.0:5000")
     app.run(host='0.0.0.0', port=5000, debug=False)
+
