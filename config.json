@@ -1,15 +1,33 @@
-<<<<<<< HEAD
 {
-    "TEMP_LIMIT": 100,
-    "HIGH_LIMIT": 10,
-    "PRESS_LIMIT": 100000,
-    "interval": 5
+    "alarm": {
+        "TEMP_HIGH": 160,
+        "PRESS_HIGH": 1500000,
+        "LEVEL_HIGH": 90,
+        "LEVEL_LOW": 25
+    },
+    "setpoints": {
+        "water_level": 50.0,
+        "pressure_mpa": 1.0
+    },
+    "pid": {
+        "water":    { "Kp": 2.0,  "Ki": 0.1, "Kd": 0.5, "bias": 47.0 },
+        "pressure": { "Kp": 40.0, "Ki": 2.5, "Kd": 2.0, "bias": 43.0 }
+    },
+    "interval": 2,
+    "api": {
+        "host": "0.0.0.0",
+        "port": 5000
+    },
+    "database": {
+        "host": "localhost",
+        "port": 5432,
+        "user": "postgres",
+        "password": "123456",
+        "dbname": "postgres"
+    },
+    "modbus": {
+        "enabled": false,
+        "host": "localhost",
+        "port": 5020
+    }
 }
-=======
-{
-    "TEMP_LIMIT": 100,
-    "HIGH_LIMIT": 10,
-    "PRESS_LIMIT": 100000,
-    "interval": 5
-}
->>>>>>> 85b66d798237d0efb6eb6949cf2ccad01ae9b1ca

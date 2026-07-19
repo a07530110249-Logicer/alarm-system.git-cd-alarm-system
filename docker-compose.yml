@@ -1,12 +1,12 @@
-version: '3.8'
-
 services:
   postgres:
     image: postgres:16
     container_name: boiler-postgres
     restart: unless-stopped
     environment:
+      POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "123456"
+      POSTGRES_DB: "postgres"
     ports:
       - "5432:5432"
     volumes:
@@ -16,6 +16,22 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+
+  api:
+    build: .
+    container_name: boiler-api
+    restart: unless-stopped
+    environment:
+      DB_HOST: postgres        # compose 网络内用服务名访问数据库
+      DB_PORT: "5432"
+      DB_USER: postgres
+      DB_PASSWORD: "123456"
+      DB_NAME: postgres
+    ports:
+      - "5000:5000"
+    depends_on:
+      postgres:
+        condition: service_healthy
 
   grafana:
     image: grafana/grafana:latest
